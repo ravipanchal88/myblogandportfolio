@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+	h1 Search for #[em= query]
+	p #{count} posts found
+	div(class="row")
+			div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12")
+				.list-group
+					each post in posts
+						a.list-group-item(href=`/myblog/${post.title}`)=post.title
+								h5=date(post.updatedAt)

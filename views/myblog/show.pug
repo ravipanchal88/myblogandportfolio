@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+	.fluid-container
+		.row
+			.col-lg-12.col-md-12.col-xs-12.blogshow
+				if post
+					h2= post.title
+					p= post.body
+					if post.imageFilename
+						p: img(src=post.imageThumbnailUrl)
+				else
+					h2 Not Found
+					p Sorry Could  not Find that Post.	

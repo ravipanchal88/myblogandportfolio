@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+    include errors
+	.formbody
+		form(action='/myportfolio/new',method='post',enctype='multipart/form-data')
+			.form-title
+				h3 New Portfolio Item
+			.form-group
+				label(for='title') Title
+				input.form-control(name='title')
+			.form-group
+				label(for='body') Post
+				textarea.form-control.col-md-12.textarea(name='body')
+			.form-group
+				label(for='image') Image
+				input.form-control(name='image', type='file')
+			.form-group
+				input.btn.btn-primary.btn-md(type='submit',value='Post') 
