@@ -67,11 +67,38 @@ body {
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: space-between;
-	border:solid .01px grey;
-	border-radius: 15px;
-	
+
 	color: indianred;
 	margin-bottom: 15px;
+	background: #87CEFA;
+	border-bottom: solid 1px grey;
+}
+
+.portfoliotitle {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.portfoliotitle1{
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: center;
+	align-items: center;
+	border:1px solid grey;
+	border-radius: 10px;
+	background: grey;
+	color: white;
+	padding:10px;
+	margin:10px;
+
+}
+
+h5{
+	font-size: small;
+	color:indianred;
 }
 
 .portfoliobox1 {
@@ -86,7 +113,18 @@ body {
 }
 
 
-h5{
-	font-size: small;
+.portfoliotitle {
 	color:indianred;
+	font-size: large;
+
+}
+
+.portfoliobody {
+	color: black;	
+}
+
+.portfoliotech {
+	color: darkgrey;
+	font-size: small;
+	
 }

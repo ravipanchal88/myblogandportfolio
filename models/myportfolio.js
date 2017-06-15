@@ -18,11 +18,18 @@ module.exports = function(sequelize, Sequelize) {
 		defaultScope: {
 			order: [['createdAt', 'DESC']]
 		},
-	  getterMethods: {
+	   getterMethods: {
 			url: function() {
 				return('/');
+			},
+			imageUrl: function() {
+				return(`/images/posts/${this.imageFilename}`);
+			},
+			imageThumbnailUrl: function() {
+				return(`${this.imageUrl}-thumbnail`);
 			}
-		}
+
+	  }
 	}));
 };
 

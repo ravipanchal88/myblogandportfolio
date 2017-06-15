@@ -7,22 +7,14 @@ var Portfolio = models.portfolio;
 var uploadHandler = multer({dest: 'public/images/posts'});
 var router = express.Router();
 
-var pager = require('pagination');
-
-var pagination = require('pagination');
-// var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
-// console.log(paginator.render());
-
-
-
-
-
 /**/
 router.get('/', function(req, res) {
 	Portfolio.findAll().then(function(result) {
+		console.log("testttttt")
 		res.render('myportfolio/index', {
 			portfolios: result
 		});
+		console.log(JSON.stringify(result));
 	});
 
 	
@@ -39,10 +31,10 @@ router.get('/:title',function(req,res){
 	Portfolio.findOne(
 			{ where :
 				{ title:req.params.title}
-			}).then(function(portfolio){
-			res.render('myportfolio/show',
+			}).then(function(result){
+			res.render('myportfolio)',
 			{
-				portfolio: portfolio
+				portfolios: result
 			});
 		});
 });
@@ -51,13 +43,23 @@ router.get('/show', function(req, res) {
 	res.render('myportfolio/show', {portfolios :portfolios});
 });
 
-router.post('/new', function(req, res) {
-	console.log("Inthe portfolio post loop");
+
+router.post('/new', uploadHandler.single('image'), function(req, res) {
+// 	Imagepost.create({
+// 		title:         request.body.title,
+// 		body:          request.body.body,
+		
+// 		imageFilename: (request.file && request.file.filename)
+
+// router.post('/new', function(req, res) {
+	console.log("In the portfolio post loop");
 	Portfolio.create({
 		title: req.body.title,
 		body:  req.body.body,
+		technology:'Javascipt,node.js,postgres',
 		imageFilename: (req.file && req.file.filename)
 	}).then(function(post) {
+		console.log("insharop loop");
 		sharp(req.file.path)
 		.resize(500, 500)
 		.max()
@@ -66,8 +68,9 @@ router.post('/new', function(req, res) {
 			res.redirect('/myportfolio');
 		});
 	}).catch(function(error) {
-		res.render('myportfolio/show', {
-			portfolio:   req.body,
+		console.log("in error loop");
+		res.render('myportfolio', {
+			portfolios:   req.body,
 			errors: error.errors
 		});
 	});

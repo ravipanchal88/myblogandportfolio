@@ -1,22 +1,28 @@
 extends ../layout
 
 block content
-	.fluid-container
-		div(class="row")
-			div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading3") 
-				h4 Welcome to My Portfolio 
-		div(class="row")
-			div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12")
-				.list-group
-					each portfolio in portfolios
-						div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12 portfoliobox")
-							div(class="portfoliobox1")
-								a(href=`/myportfolio/${portfolio.title}`)=portfolio.title
-								h5= portfolio.body
-								h5 Built Using:
-									p= portfolio.technology
-							img(src="/images/project.png" style="width:350px;height:350px")
-		div(class='row')
-			div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12")
-				p If you are an Admin and want to add portfolio item please click
-					a(href='/myportfolio/new') Here
+		.fluid-container
+			div(class="row")
+				div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading3") 
+					h4 Welcome to My Portfolio
+			//div(class="row")
+			//	.list-group.portfoliotitle
+			//		each portfolio in portfolios
+			//			a.portfoliotitle1(href=`/myportfolio/${portfolio.title}`)=portfolio.title
+			div(class="row")
+				div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12")
+					.list-group
+						each portfolio in portfolios
+							div(class="col-lg-6 col-md-6 col-sm-12 col-xs-12 portfoliobox")
+								div(class="portfoliobox1")
+									a.portfoliotitle(href=`/myportfolio/${portfolio.title}`)=portfolio.title
+									h5.portfoliobody= portfolio.body
+									h5.portfoliotech Built Using:
+										p= portfolio.technology
+							div(class="col-lg-6 col-md-6 col-sm-12 col-xs-12 portfoliobox")
+								div(class="portfoliobox1")
+									img(src=portfolio.imageThumbnailUrl style="width:650px;height:450px")
+			//div(class='row')
+			//	div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12 portfoliobox")
+			//		p If you are an Admin and want to add portfolio item please click
+			//			a(href='/myportfolio/new') Here
