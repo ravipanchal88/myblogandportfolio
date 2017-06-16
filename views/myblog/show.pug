@@ -2,13 +2,15 @@ extends ../layout
 
 block content
 	.fluid-container
-		.row
-			.col-lg-12.col-md-12.col-xs-12.blogshow
-				if post
-					h2= post.title
-					p= post.body
-					if post.imageFilename
-						p: img(src=post.imageThumbnailUrl)
-				else
-					h2 Not Found
-					p Sorry Could  not Find that Post.	
+		.row.blogshow
+			.col-lg-6.col-md-6.col-xs-12
+				.blogshow
+					if post
+						h2= post.title
+						h5=date(post.updatedAt)
+						p= post.body
+						if post.imageFilename
+							p: img(src=post.imageThumbnailUrl)
+					else
+						h2 Not Found
+						p Sorry Could  not Find that Post.	
