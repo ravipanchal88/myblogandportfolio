@@ -31,16 +31,7 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			}
 		},
-		imageFilename: {
-			type:         DataTypes.STRING,
-			allowNull:    false,
-			defaultValue: '',
-			validate: {
-				notEmpty: {
-					msg: 'Image is required'
-				}
-			}
-		}
+		
 	}, {
 		defaultScope: {
 			order: [['createdAt', 'DESC']]
@@ -50,7 +41,7 @@ module.exports = function(sequelize, DataTypes) {
 				return(`/blog/${this.slug}`);
 			},
 			imageUrl: function() {
-				return(`/images/posts/${this.imageFilename}`);
+				return(`https://s3.amazonaws.com/myblogandportfolio/posts/${this.id}`);
 			},
 			imageThumbnailUrl: function() {
 				return(`${this.imageUrl}-thumbnail`);

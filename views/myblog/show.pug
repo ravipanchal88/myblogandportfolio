@@ -9,8 +9,7 @@ block content
 						h2= post.title
 						h5=date(post.updatedAt)
 						p= post.body
-						if post.imageFilename
-							p: img(src=post.imageThumbnailUrl)
+						p: img(src=post.imageThumbnailUrl)
 					else
 						h2 Not Found
 						p Sorry Could  not Find that Post.	
